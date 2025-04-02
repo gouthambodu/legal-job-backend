@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Playwright dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget gnupg curl unzip \
     libgbm1 \
@@ -9,20 +9,23 @@ RUN apt-get update && apt-get install -y \
     libxfixes3 libxi6 libxrandr2 libxtst6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
+# Set workdir
 WORKDIR /app
 
-# Install Python deps
+# Copy requirements first
 COPY requirements.txt .
+
+# Install pip deps
 RUN pip install --upgrade pip
 RUN pip install playwright
 RUN python -m playwright install
-RUN python -m playwright install-deps  # ✅ This is key!
+RUN python -m playwright install-deps
 
-# Copy rest of app
+# Copy rest of the code
 COPY . .
 
-# Expose FastAPI port
+# Expose port
 EXPOSE 10000
 
+# Start the FastAPI app (must match filename and app name)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]

@@ -3,5 +3,4 @@ services:
     name: legal-job-api
     env: docker
     plan: free
-    repo: https://github.com/gouthambodu/legal-job-backend
     region: oregon
