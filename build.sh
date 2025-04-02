@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Install dependencies
-pip install -r requirements.txt
+echo "Installing Python dependencies..."
+pip install --upgrade pip
+pip install fastapi uvicorn requests beautifulsoup4 playwright
 
-# Install Playwright and its browser binaries
-python -m pip install playwright
+echo "Installing Playwright browser binaries..."
 python -m playwright install
