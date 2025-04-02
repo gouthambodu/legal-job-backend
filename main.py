@@ -1,5 +1,5 @@
 from scraper import scrape_civil_service_jobs
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import json
