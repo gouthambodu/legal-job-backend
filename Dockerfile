@@ -24,9 +24,9 @@ RUN python -m playwright install-deps
 # Copy rest of the code
 COPY . .
 
-# Expose port Render expects
+# Expose the port Render expects
 EXPOSE 10000
 
-# Start the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
+# Run the FastAPI server with uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000
 
