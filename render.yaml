@@ -1,8 +1,7 @@
 services:
   - type: web
     name: legal-job-api
-    env: python
-    buildCommand: ./build.sh
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
-    autoDeploy: true
+    env: docker
     plan: free
+    repo: https://github.com/gouthambodu/legal-job-backend
+    region: oregon
